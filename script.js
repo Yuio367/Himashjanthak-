@@ -13,7 +13,10 @@ const animeData = [
     { title: "Baki Hanma(season-1)", img: "https://i.ibb.co/P7Y8Z4j/Screenshot-20250222-205538.jpg", video: "https://t.me/hikimarui_the_owner/3" },
   
 
-    { title: "Baki Hanma(season -2)", img: "https://i.ibb.co/P7Y8Z4j/Screenshot-20250222-205538.jpg", video: "https://t.me/hikimaru_the_owner/36" },
+    { title: "Baki Hanma(season -2)", img: "https://i.ibb.co/P7Y8Z4j/Screenshot-20250222-205538.jpg", video: "https://t.me/hikimarui_the_owner/3" },
+  
+
+    { title: "Dr. Stone(season-1)", img: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", video: "https://t.me/hikimaruii/4" },
 ];
 
 // Function to show anime list
