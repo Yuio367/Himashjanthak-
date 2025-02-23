@@ -17,6 +17,8 @@ const animeData = [
   
 
     { title: "Dr. Stone(season-1)", img: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", video: "https://t.me/hikimaruii/4" },
+    
+    { title: "Dr.Stone(season-2)", img: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", video: "https://t.me/hikimaruii/67" },
 ];
 
 // Function to show anime list
