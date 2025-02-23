@@ -26,10 +26,11 @@
             margin-bottom: 10px;
         }
         .anime-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 800px;
         }
         .anime-card {
             background: #1e1e1e;
