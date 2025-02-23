@@ -56,7 +56,20 @@ input {
 
 }
 
-.anime:hover {
+.anime:hover {.anime-card a {
+    display: block;
+    background-color: #ff4500;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.anime-card a:hover {
+    background-color: #ff5722;
+}
 
     background: #333;
 
