@@ -1,231 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Nest</title>
-  
-  <style>
-    body {
-      font-family: 'Orbitron', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #111;
-      color: white;
-      text-align: center;
-    }
-
-    #websiteName {
-      font-size: 48px;
-      margin-top: 20px;
-      color: #00FF00;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    .search-bar-container {
-      margin: 30px auto;
-      width: 50%;
-      position: relative;
-    }
-
-    .search-bar-container input {
-      width: 100%;
-      padding: 15px;
-      font-size: 16px;
-      border: 2px solid #00FF00;
-      border-radius: 5px;
-      background: #1e1e1e;
-      color: #fff;
-    }
-
-    .search-bar-container button {
-      position: absolute;
-      right: 0;
-      top: 0;
-      background: #00FF00;
-      border: none;
-      padding: 15px 30px;
-      color: #111;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #errorMessage {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #1e1e1e;
-      border-radius: 5px;
-      color: #00FF00;
-      font-size: 18px;
-      box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
-      animation: fadeIn 1s forwards;
-    }
-
-    .anime-card {
-    /* Anime Card */
-.anime-card {
-  width: 48%; /* Ensure two cards per row */
-  background: #1e1e1e; /* Dark background for a modern look */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Prevents content overflow */
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Green glowing effect */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-  margin-bottom: 20px; /* Space below each card */
-}
-
-/* On Hover - Card transform effect */
-.anime-card:hover {
-  transform: scale(1.05); /* Slightly enlarge the card on hover */
-  box-shadow: 0 0 25px rgba(0, 255, 0, 1); /* Glowing effect on hover */
-}
-
-/* Anime Card Image */
-.anime-card img {
-  width: 100%; /* Ensure the image fills the card width */
-  height: 200px; /* Set a fixed height for uniform images */
-  object-fit: cover; /* Ensure the image fits well inside the container */
-  border-bottom: 2px solid #4CAF50; /* Add a green border below the image */
-}
-
-/* Anime Card Text (Title and Watch Now Link) */
-.anime-card p {
-  padding: 10px;
-  color: #fff; /* White text color */
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center; /* Center the text */
-}
-
-/* Watch Now Link */
-.anime-card a {
-  display: block;
-  background: #4CAF50; /* Green background for the link */
-  color: #fff; /* White text */
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-  margin: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-/* On Hover - Watch Now Link */
-.anime-card a:hover {
-  background-color: #45a049; /* Darker green when hovering */
-      }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div id="websiteName">Anime Nest</div>
-
-  <!-- Search Bar -->
-  <div class="search-bar-container">
-    <input type="text" id="searchBar" placeholder="Search..." onkeyup="searchFunction()">
-    <button id="searchButton" onclick="searchFunction()">Search</button>
-  </div>
-
-  <!-- Error Message -->
-  <div id="errorMessage">
-    Anime not found. Sorry for this type of update. We try to fix it soon.
-  </div>
-
-  <!-- Anime Cards -->
-  <div class="anime-card" data-title="Attack on Titan(Season-1)">
-    <img src="https://i.ibb.co/nMvww8Nj/Screenshot-20250223-095729.jpg" alt="Attack on Titan">
-    <p>Attack on Titan (Season-1)</p>
-    <a href="https://t.me/hikimaru_the_owner/9" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Attack on Titan(Season-2)">
-    <img src="https://i.ibb.co/9BkyhFQ/Screenshot-20250223-100045.jpg" alt="Attack on Titan">
-    <p>Attack on Titan (Season-2)</p>
-    <a href="https://t.me/hikimaru_the_owner/36" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Attack on Titan(Season-3)">
-    <img src="https://i.ibb.co/DfQBqhV3/Screenshot-20250223-100036.jpg" alt="Attack on Titan">
-    <p>Attack on Titan (Season-3)</p>
-    <a href="https://t.me/hikimaru_the_owner/49" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Attack on Titan(Season-4)">
-    <img src="https://i.ibb.co/vCKzG4NW/Screenshot-20250223-100557.jpg" alt="Attack on Titan">
-    <p>Attack on Titan (Season-4)</p>
-    <a href="https://t.me/hikimaru_the_owner/71" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Baki Hanma(Season-1)">
-    <img src="https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg" alt="Baki Hanma">
-    <p>Baki Hanma (Season-1)</p>
-    <a href="https://t.me/hikimarui_the_owner/3" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Baki Hanma(Season-2)">
-    <img src="https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg" alt="Baki Hanma">
-    <p>Baki Hanma (Season-2)</p>
-    <a href="https://t.me/hikimarui_the_owner/17" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Dr. Stone(Season-1)">
-    <img src="https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg" alt="Dr. Stone">
-    <p>Dr. Stone (Season-1)</p>
-    <a href="https://t.me/hikimaruii/4" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Dr. Stone(Season-2)">
-    <img src="https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg" alt="Dr. Stone">
-    <p>Dr. Stone (Season-2)</p>
-    <a href="https://t.me/hikimaruii/67" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Naruto (Season -2)[Episode -1]">
-    <img src="https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg" alt="Naruto">
-    <p>Naruto( Season-2)[Episode-1]</p>
-    <a href="https://t.me/Honesthimesh/7" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Naruto (Season -2)[Episode -3]">
-    <img src="https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg" alt="Naruto">
-    <p>Naruto( Season-2)[Episode-3]</p>
-    <a href="https://t.me/Honesthimesh/8" target="_blank">Watch Now</a>
-  </div>
-  <div class="anime-card" data-title="Naruto (Season -2)[Episode -4]">
-    <img src="https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg" alt="Naruto">
-    <p>Naruto( Season-2)[Episode-4]</p>
-    <a href="https://t.me/Honesthimesh/9" target="_blank">Watch Now</a>
-  </div>
-
-  <script>
-    function searchFunction() {
-      var query = document.getElementById("searchBar").value.toLowerCase();
-      var found = false;
-
-      // Check if the search term matches any anime titles
-      var animeCards = document.querySelectorAll('.anime-card');
-      animeCards.forEach(function(card) {
-        var title = card.getAttribute('data-title').toLowerCase();
-        if (title.includes(query)) {
-          card.style.display = "inline-block";
-          found = true;
-        } else {
-          card.style.display = "none";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Nest</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
         }
-      });
 
-      // Show the error message if no results for anime found
-      if (query.includes("anime") && !found) {
-        document.getElementById("errorMessage").style.display = "block";
-      } else {
-        document.getElementById("errorMessage").style.display = "none";
-      }
-    }
-  </script>
-</body>
-</html>
+        h1 {
+            font-size: 60px;
+            color: #00FF00;
+            text-align: center;
+            margin-top: 50px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 80%;
+            max-width: 600px;
+            padding: 12px;
+            border: 2px solid #00FF00;
+            background-color: transparent;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .search-bar:focus {
+            border-color: #00AA00;
+        }
+
+        .message {
+            display: none;
+            padding: 10px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .anime-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+
+        .anime-card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 48%;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .anime-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .anime-card p {
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .anime-card a {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: #00FF00;
+            color: #121212;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .anime-card a:hover {
+            background-color: #00AA00;
+        }
+
+        .anime-card:hover {
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 768px) {
+            .anime-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Website Name -->
+    <h1>Anime Nest</h1>
+
+    <!-- Search Bar and Message -->
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search for anime..." id="searchBar">
+        <div class="message" id="noResultsMessage">Anime not found. Sorry for this type of update. We try to fix it soon.</div>
+    </div>
+
+    <!-- Anime Cards -->
+    <div class="anime-container" id="animeContainer">
+        <div class="anime-card" data-title="Attack on Titan(Season-1)">
+            <img src="https://i.ibb.co/nMvww8Nj/Screenshot-20250223-095729.jpg" alt="Attack on Titan">
+            <p>Attack on Titan (Season-1)</p>
+            <a href="https://t.me/hikimaru_the_owner/9" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Attack on Titan(Season-2)">
+            <img src="https://i.ibb.co/9BkyhFQ/Screenshot-20250223-100045.jpg" alt="Attack on Titan">
+            <p>Attack on Titan (Season-2)</p>
+            <a href="https://t.me/hikimaru_the_owner/36" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Attack on Titan(Season-3)">
+            <img src="https://i.ibb.co/DfQBqhV3/Screenshot-20250223-100036.jpg" alt="Attack on Titan">
+            <p>Attack on Titan (Season-3)</p>
+            <a href="https://t.me/hikimaru_the_owner/49" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Attack on Titan(Season-4)">
+            <img src="https://i.ibb.co/vCKzG4NW/Screenshot-20250223-100557.jpg" alt="Attack on Titan">
+            <p>Attack on Titan (Season-4)</p>
+            <a href="https://t.me/hikimaru_the_owner/71" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Baki Hanma(Season-1)">
+            <img src="https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg" alt="Baki Hanma">
+            <p>Baki Hanma (Season-1)</p>
+            <a href="https://t.me/hikimarui_the_owner/3" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Baki Hanma(Season-2)">
+            <img src="https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg" alt="Baki Hanma">
+            <p>Baki Hanma (Season-2)</p>
+            <a href="https://t.me/hikimarui_the_owner/17" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Dr. Stone(Season-1)">
+            <img src="https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg" alt="Dr. Stone">
+            <p>Dr. Stone (Season-1)</p>
+            <a href="https://t.me/hikimaruii/4" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Dr. Stone(Season-2)">
+            <img src="https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg" alt="Dr. Stone">
+            <p>Dr. Stone (Season-2)</p>
+            <a href="https://t.me/hikimaruii/67" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Naruto (Season -2)[Episode -1]">
+            <img src="https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg" alt="Naruto">
+            <p>Naruto (Season-2)[Episode-1]</p>
+            <a href="https://t.me/Honesthimesh/7" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Naruto (Season -2)[Episode -3]">
+            <img src="https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg" alt="Naruto">
+            <p>Naruto (Season-2)[Episode-3]</p>
+            <a href="https://t.me/Honesthimesh/8" target="_blank">Watch Now</a>
+        </div>
+
+        <div class="anime-card" data-title="Naruto (Season -2)[Episode -4]">
+            <img src="https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg" alt="Naruto">
+            <p>Naruto (Season-2)[Episode-4]</p>
+            <a href="https://t.me/Honesthimesh/9" target="_blank">Watch Now</a>
+        </div>
+    </div>
+
+    <script>
+        const searchBar = document.getElementById('searchBar');
+        const animeContainer = document.getElementById('animeContainer');
+        const noResultsMessage = document.getElementById('noResultsMessage');
+        
+        searchBar.addEventListener('input', function() {
+            const searchTerm = searchBar.value.toLowerCase();
+            const cards = document.querySelectorAll('.anime-card');
+            let resultsFound = false;
+            
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
