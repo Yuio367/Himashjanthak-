@@ -66,45 +66,59 @@
     }
 
     .anime-card {
-      width: 48%;
-      margin: 20px 2.5%;
-      display: inline-block;
-      background: #1e1e1e;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
-      transition: transform 0.3s ease;
-    }
+    /* Anime Card */
+.anime-card {
+  width: 48%; /* Ensure two cards per row */
+  background: #1e1e1e; /* Dark background for a modern look */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Prevents content overflow */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Green glowing effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  margin-bottom: 20px; /* Space below each card */
+}
 
-    .anime-card:hover {
-      transform: scale(1.05);
-    }
+/* On Hover - Card transform effect */
+.anime-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card on hover */
+  box-shadow: 0 0 25px rgba(0, 255, 0, 1); /* Glowing effect on hover */
+}
 
-    .anime-card img {
-      width: 100%;
-      height: auto;
-    }
+/* Anime Card Image */
+.anime-card img {
+  width: 100%; /* Ensure the image fills the card width */
+  height: 200px; /* Set a fixed height for uniform images */
+  object-fit: cover; /* Ensure the image fits well inside the container */
+  border-bottom: 2px solid #4CAF50; /* Add a green border below the image */
+}
 
-    .anime-card p {
-      font-size: 18px;
-      padding: 10px;
-      color: #00FF00;
-    }
+/* Anime Card Text (Title and Watch Now Link) */
+.anime-card p {
+  padding: 10px;
+  color: #fff; /* White text color */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center; /* Center the text */
+}
 
-    .anime-card a {
-      display: block;
-      text-align: center;
-      padding: 15px;
-      background-color: #00FF00;
-      text-decoration: none;
-      color: #111;
-      font-size: 16px;
-      border-radius: 5px;
-    }
+/* Watch Now Link */
+.anime-card a {
+  display: block;
+  background: #4CAF50; /* Green background for the link */
+  color: #fff; /* White text */
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
 
-    .anime-card a:hover {
-      background-color: #009900;
-    }
+/* On Hover - Watch Now Link */
+.anime-card a:hover {
+  background-color: #45a049; /* Darker green when hovering */
+      }
 
     @keyframes fadeIn {
       0% {
