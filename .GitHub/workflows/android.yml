@@ -1,1 +1,33 @@
+name: Build APK
 
+# Triggers the workflow on pushes to the main branch
+on:
+  push:
+    branches:
+      - main  # You can change 'main' to the branch you're using (e.g., 'master')
+
+jobs:
+  build:
+    # Runs on the latest available Ubuntu runner (you can change this to another operating system)
+    runs-on: ubuntu-latest
+
+    # Steps define the tasks that will be executed as part of the build process
+    steps:
+
+      # Step 1: Checkout the repository
+      - name: Check out repository
+        uses: actions/checkout@v2  # This checks out the code from the repository
+
+      # Step 2: Set up JDK (Java Development Kit)
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Make sure your project uses Java 11, or change this to match the version your project needs
+
+      # Step 3: Set up Gradle
+      - name: Set up Gradle
+        uses: gradle/wrapper-validation-action@v1  # Ensures Gradle wrapper is correctly configured
+
+      # Step 4: Build the APK using Gradle
+      - name: Build APK
+        run: ./gradlew assembleRelease  # Runs the Gradle command to assemble the APK for release
