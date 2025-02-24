@@ -51,12 +51,55 @@
             display: none;
             color: red;
         }
+        <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Nest</title>
+    
+    <style>
+        /* Add your CSS here */
+        #searchContainer {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px cyan;
+        }
+
+        #searchBar {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #updateButton {
+            margin-left: 10px;
+            padding: 10px;
+            background: cyan;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #updateButton:hover {
+            background: lightblue;
+        }
+    </style>
+</head>
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Anime Nest</h1>
-        <input type="text" id="searchBar" placeholder="Search Anime..." onkeyup="searchAnime()">
+        <div id="searchContainer">
+    <input type="text" id="searchBar" placeholder="Search anime...">
+    <button id="updateButton" onclick="checkForUpdate()">Check for Update</button>
+        </div>
         <p id="notFound">Anime not found</p>
         <div class="anime-list" id="animeList">
             <div class="anime-card" data-title="Attack on Titan(Season-1)">
@@ -135,6 +178,12 @@ async function checkForUpdate() {
         alert("Failed to check for updates. Please try again later.");
     }
 }
+</script>
+<script>
+    function checkForUpdate() {
+        alert("Checking for updates...");
+        // You can later add real functionality to fetch updates
+    }
 </script>
 
 </body>
