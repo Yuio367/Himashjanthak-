@@ -1,5 +1,30 @@
 <!DOCTYPE html><html lang="en">
 <head>
+    <style>
+  .futuristic-message {
+    color: #00FF00;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    width: 100%;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+    </style>
     
     <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE">
     <meta charset="UTF-8">
@@ -52,6 +77,22 @@
             display: none;
             color: red;
         }
+        <body>
+  <!-- Your existing content -->
+
+  <!-- Your existing search bar (keep this as-is) -->
+  <div class="search-bar-container">
+    <input type="text" id="searchBar" placeholder="Search..." onkeyup="searchFunction()">
+    <button id="searchButton" onclick="searchFunction()">Search</button>
+  </div>
+
+  <!-- Futuristic Error Message (hidden by default) -->
+  <div id="errorMessage" style="display: none;" class="futuristic-message">
+    Anime was not found. Sorry for this type of update. We try to fix it soon.
+  </div>
+
+  <!-- Your other content -->
+</body>
         
     </style>
 </head>
@@ -139,6 +180,26 @@
     }
 
 </script>
+        <script>
+  function searchFunction() {
+    var query = document.getElementById("searchBar").value.toLowerCase();
+    
+    // Simulate a search for "anime" content (replace with your actual logic)
+    var found = false;
+    
+    if (query.includes("anime")) {
+      // Set 'found' to false if no anime content is found (simulate the condition)
+      found = false;  // If not found, set this to false
+    }
+
+    // Show error message if "anime" is searched and not found
+    if (!found && query.includes("anime")) {
+      document.getElementById("errorMessage").style.display = "block"; // Show error message
+    } else {
+      document.getElementById("errorMessage").style.display = "none"; // Hide message if content found
+    }
+  }
+        </script>
 
 </body>
       </html>
