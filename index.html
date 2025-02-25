@@ -1,3 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Nest</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0f0f0f;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff0099, #493240);
+            padding: 20px;
+            font-size: 24px;
+            box-shadow: 0px 4px 10px rgba(255, 0, 153, 0.5);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+
+        #searchBar {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .anime-section {
+            margin: 10px auto;
+            width: 90%;
+            max-width: 600px;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.5);
+        }
+
+        .anime-header {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+            cursor: pointer;
+            background: #333;
+            border-radius: 10px 10px 0 0;
+            text-align: left;
+            padding-left: 15px;
         }
 
         .anime-header:hover {
@@ -7,6 +65,8 @@
         .anime-content {
             display: none;
             padding: 10px;
+            background: #222;
+            border-radius: 0 0 10px 10px;
         }
 
         .anime-card {
@@ -15,6 +75,7 @@
             padding: 10px;
             border-radius: 8px;
             transition: 0.3s;
+            text-align: center;
         }
 
         .anime-card img {
@@ -37,7 +98,6 @@
     <header>
         <h1>Anime Nest</h1>
         <input type="text" id="searchBar" placeholder="Search Anime..." oninput="searchAnime()">
-        <p id="notFoundMessage">Anime not found</p>
     </header>
 
     <main id="animeContainer">
@@ -49,11 +109,6 @@
             { series: "Attack on Titan", season: 1, episode: "", image: "https://i.ibb.co/nMvww8Nj/Screenshot-20250223-095729.jpg", link: "https://t.me/hikimaru_the_owner/9" },
             { series: "Attack on Titan", season: 2, episode: "", image: "https://i.ibb.co/9BkyhFQ/Screenshot-20250223-100045.jpg", link: "https://t.me/hikimaru_the_owner/36" },
             { series: "Attack on Titan", season: 3, episode: "", image: "https://i.ibb.co/DfQBqhV3/Screenshot-20250223-100036.jpg", link: "https://t.me/hikimaru_the_owner/49" },
-            { series: "Attack on Titan", season: 4, episode: "", image: "https://i.ibb.co/vCKzG4NW/Screenshot-20250223-100557.jpg", link: "https://t.me/hikimaru_the_owner/71" },
-            { series: "Baki Hanma", season: 1, episode: "", image: "https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg", link: "https://t.me/hikimarui_the_owner/3" },
-            { series: "Baki Hanma", season: 2, episode: "", image: "https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg", link: "https://t.me/hikimarui_the_owner/17" },
-            { series: "Dr. Stone", season: 1, episode: "", image: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", link: "https://t.me/hikimaruii/4" },
-            { series: "Dr. Stone", season: 2, episode: "", image: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", link: "https://t.me/hikimaruii/67" },
             { series: "Naruto", season: 2, episode: 1, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/7" },
             { series: "Naruto", season: 2, episode: 3, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/8" },
             { series: "Naruto", season: 2, episode: 4, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/9" }
@@ -79,7 +134,7 @@
 
                 section.innerHTML = `
                     <div class="anime-header" onclick="toggleDrawer(this)">
-                        ${series}
+                        ${series} <span style="float: right;">▼</span>
                     </div>
                     <div class="anime-content">
                         ${animeGroups[series].map(anime => `
@@ -104,4 +159,4 @@
     </script>
 
 </body>
-</html> 
+</html>
