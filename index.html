@@ -4,159 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Nest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #0f0f0f;
-            color: white;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
         }
-
-        header {
-            background: linear-gradient(90deg, #ff0099, #493240);
-            padding: 20px;
-            font-size: 24px;
-            box-shadow: 0px 4px 10px rgba(255, 0, 153, 0.5);
+        body {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
         }
-
-        h1 {
-            font-size: 36px;
+        /* Animated Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #120a8f, #ff0066, #120a8f);
+            background-size: 400% 400%;
+            animation: bgAnimation 10s infinite alternate;
+            z-index: -1;
+        }
+        @keyframes bgAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 15px 0;
+            font-size: 22px;
             font-weight: bold;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(255, 0, 102, 0.8);
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+            letter-spacing: 2px;
         }
-
-        #searchBar {
+        /* Search Box */
+        .search-container {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+        }
+        .search-box {
             width: 80%;
-            padding: 10px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 5px;
+            max-width: 600px;
+            padding: 12px;
+            border: 2px solid #ff0066;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            outline: none;
             font-size: 18px;
+            color: white;
             text-align: center;
         }
-
-        .anime-section {
-            margin: 10px auto;
-            width: 90%;
-            max-width: 600px;
-            background: #222;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.5);
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
-
-        .anime-header {
-            font-size: 20px;
-            font-weight: bold;
-            padding: 10px;
-            cursor: pointer;
-            background: #333;
-            border-radius: 10px 10px 0 0;
-            text-align: left;
-            padding-left: 15px;
+        /* Anime Grid */
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            margin-top: 40px;
         }
-
-        .anime-header:hover {
-            background: #444;
-        }
-
-        .anime-content {
-            display: none;
-            padding: 10px;
-            background: #222;
-            border-radius: 0 0 10px 10px;
-        }
-
         .anime-card {
-            background: #333;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 12px;
             transition: 0.3s;
             text-align: center;
+            box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
         }
-
+        .anime-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 0, 102, 0.9);
+        }
         .anime-card img {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 12px;
         }
-
         .anime-card a {
             display: block;
-            margin-top: 5px;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #ff0066;
+            color: white;
             text-decoration: none;
-            color: cyan;
-            font-size: 16px;
+            border-radius: 8px;
             font-weight: bold;
+            transition: 0.3s;
+        }
+        .anime-card a:hover {
+            background: #ff3385;
+        }
+        /* Not Found Message */
+        .not-found {
+            display: none;
+            margin-top: 20px;
+            font-size: 22px;
+            color: #ff0066;
+            text-shadow: 0 0 10px #ff0066, 0 0 20px #ff3385;
+            font-weight: bold;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #ff0066, 0 0 20px #ff3385; }
+            100% { text-shadow: 0 0 15px #ff3385, 0 0 30px #ff66a3; }
+        }
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Anime Nest</h1>
-        <input type="text" id="searchBar" placeholder="Search Anime..." oninput="searchAnime()">
-    </header>
+    <div class="top-bar">Anime Nest</div>
 
-    <main id="animeContainer">
-        <!-- Anime sections will be dynamically generated here -->
-    </main>
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchInput" placeholder="Search for anime..." onkeyup="searchAnime()">
+    </div>
+
+    <div class="not-found" id="notFoundMessage">🚀 Anime not found 🚀</div>
+
+    <div class="anime-grid" id="animeGrid">
+        <div class="anime-card" data-title="Attack on Titan(Season-1)">
+            <img src="https://i.ibb.co/nMvww8Nj/Screenshot-20250223-095729.jpg" alt="Attack on Titan">
+            <p>Attack on Titan (Season-1)</p>
+            <a href="https://t.me/hikimaru_the_owner/9" target="_blank">Watch Now</a>
+        </div>
+        <div class="anime-card" data-title="Baki Hanma(Season-1)">
+            <img src="https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg" alt="Baki Hanma">
+            <p> Baki Hanma (Season-1)</p>
+            <a href="https://t.me/hikimarui_the_owner/3" target="_blank">Watch Now</a>
+        </div>
+        <div class="anime-card" data-title="Dr. Stone(Season-1)">
+            <img src="https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg" alt="Dr. Stone">
+            <p> Dr. Stone (Season-1)</p>
+            <a href="https://t.me/hikimaruii/4" target="_blank">Watch Now</a>
+        </div>
+    </div>
+
+    <div class="footer">© 2025 Anime Nest. All Rights Reserved.</div>
 
     <script>
-        const animeDatabase = [
-            { series: "Attack on Titan", season: 1, episode: "", image: "https://i.ibb.co/nMvww8Nj/Screenshot-20250223-095729.jpg", link: "https://t.me/hikimaru_the_owner/9" },
-            { series: "Attack on Titan", season: 2, episode: "", image: "https://i.ibb.co/9BkyhFQ/Screenshot-20250223-100045.jpg", link: "https://t.me/hikimaru_the_owner/36" },
-            { series: "Attack on Titan", season: 3, episode: "", image: "https://i.ibb.co/DfQBqhV3/Screenshot-20250223-100036.jpg", link: "https://t.me/hikimaru_the_owner/49" },
-            { series: "Naruto", season: 2, episode: 1, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/7" },
-            { series: "Naruto", season: 2, episode: 3, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/8" },
-            { series: "Naruto", season: 2, episode: 4, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/9" }
-        ];
+        function searchAnime() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let cards = document.querySelectorAll(".anime-card");
+            let found = false;
 
-        function displayAnimeList() {
-            const container = document.getElementById('animeContainer');
-            container.innerHTML = '';
-
-            let animeGroups = {};
-
-            animeDatabase.forEach(anime => {
-                let key = `${anime.series} (Season ${anime.season})`;
-                if (!animeGroups[key]) {
-                    animeGroups[key] = [];
+            cards.forEach(card => {
+                let title = card.getAttribute("data-title").toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = "block";
+                    found = true;
+                } else {
+                    card.style.display = "none";
                 }
-                animeGroups[key].push(anime);
             });
 
-            Object.keys(animeGroups).forEach(series => {
-                let section = document.createElement('div');
-                section.classList.add('anime-section');
-
-                section.innerHTML = `
-                    <div class="anime-header" onclick="toggleDrawer(this)">
-                        ${series} <span style="float: right;">▼</span>
-                    </div>
-                    <div class="anime-content">
-                        ${animeGroups[series].map(anime => `
-                            <div class="anime-card">
-                                <img src="${anime.image}" alt="${anime.series}">
-                                <a href="${anime.link}" target="_blank">${anime.episode ? "Episode " + anime.episode : "Watch Now"}</a>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-
-                container.appendChild(section);
-            });
+            let notFoundMessage = document.getElementById("notFoundMessage");
+            notFoundMessage.style.display = found ? "none" : "block";
         }
-
-        function toggleDrawer(header) {
-            let content = header.nextElementSibling;
-            content.style.display = content.style.display === "block" ? "none" : "block";
-        }
-
-        displayAnimeList();
     </script>
 
 </body>
-</html>
+                </html>
