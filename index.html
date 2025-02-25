@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,37 +45,52 @@
             display: none;
         }
 
-        .anime-card {
-            background: #222;
+        .anime-section {
             margin: 10px auto;
-            padding: 15px;
-            width: 80%;
+            width: 90%;
             max-width: 600px;
+            background: #222;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.5);
-            transition: 0.3s;
         }
 
-        .anime-card:hover {
-            transform: scale(1.05);
+        .anime-header {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+            cursor: pointer;
+            background: #333;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .anime-header:hover {
+            background: #444;
+        }
+
+        .anime-content {
+            display: none;
+            padding: 10px;
+        }
+
+        .anime-card {
+            background: #333;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: 0.3s;
         }
 
         .anime-card img {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 8px;
         }
 
-        .anime-title {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        a {
+        .anime-card a {
             display: block;
-            margin-top: 10px;
+            margin-top: 5px;
             text-decoration: none;
             color: cyan;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
         }
     </style>
@@ -89,61 +104,67 @@
     </header>
 
     <main id="animeContainer">
-        <!-- Anime cards will be dynamically added here -->
+        <!-- Anime sections will be dynamically generated here -->
     </main>
 
     <script>
         const animeDatabase = [
-            { title: "Attack on Titan (Season-1)", image: "https://i.ibb.co/nMvww8Nj/Screenshot-20250223-095729.jpg", link: "https://t.me/hikimaru_the_owner/9" },
-            { title: "Attack on Titan (Season-2)", image: "https://i.ibb.co/9BkyhFQ/Screenshot-20250223-100045.jpg", link: "https://t.me/hikimaru_the_owner/36" },
-            { title: "Attack on Titan (Season-3)", image: "https://i.ibb.co/DfQBqhV3/Screenshot-20250223-100036.jpg", link: "https://t.me/hikimaru_the_owner/49" },
-            { title: "Attack on Titan (Season-4)", image: "https://i.ibb.co/vCKzG4NW/Screenshot-20250223-100557.jpg", link: "https://t.me/hikimaru_the_owner/71" },
-            { title: "Baki Hanma (Season-1)", image: "https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg", link: "https://t.me/hikimarui_the_owner/3" },
-            { title: "Baki Hanma (Season-2)", image: "https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg", link: "https://t.me/hikimarui_the_owner/17" },
-            { title: "Dr. Stone (Season-1)", image: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", link: "https://t.me/hikimaruii/4" },
-            { title: "Dr. Stone (Season-2)", image: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", link: "https://t.me/hikimaruii/67" },
-            { title: "Naruto (Season-2) [Episode-1]", image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/7" },
-            { title: "Naruto (Season-2) [Episode-3]", image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/8" },
-            { title: "Naruto (Season-2) [Episode-4]", image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/9" }
+            { series: "Attack on Titan", season: 1, episode: "", image: "https://i.ibb.co/nMvww8Nj/Screenshot-20250223-095729.jpg", link: "https://t.me/hikimaru_the_owner/9" },
+            { series: "Attack on Titan", season: 2, episode: "", image: "https://i.ibb.co/9BkyhFQ/Screenshot-20250223-100045.jpg", link: "https://t.me/hikimaru_the_owner/36" },
+            { series: "Attack on Titan", season: 3, episode: "", image: "https://i.ibb.co/DfQBqhV3/Screenshot-20250223-100036.jpg", link: "https://t.me/hikimaru_the_owner/49" },
+            { series: "Attack on Titan", season: 4, episode: "", image: "https://i.ibb.co/vCKzG4NW/Screenshot-20250223-100557.jpg", link: "https://t.me/hikimaru_the_owner/71" },
+            { series: "Baki Hanma", season: 1, episode: "", image: "https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg", link: "https://t.me/hikimarui_the_owner/3" },
+            { series: "Baki Hanma", season: 2, episode: "", image: "https://i.ibb.co/PvxgspPN/Screenshot-20250222-205538.jpg", link: "https://t.me/hikimarui_the_owner/17" },
+            { series: "Dr. Stone", season: 1, episode: "", image: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", link: "https://t.me/hikimaruii/4" },
+            { series: "Dr. Stone", season: 2, episode: "", image: "https://i.ibb.co/gbw62LcH/MV5-BYz-Zk-Yj-M1-MWMt-NTY3-Mi00-MTMz-LTlh-Nm-Qt-N2-Ex-Zj-Fk-Yzdj-Zm-Fj-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX10.jpg", link: "https://t.me/hikimaruii/67" },
+            { series: "Naruto", season: 2, episode: 1, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/7" },
+            { series: "Naruto", season: 2, episode: 3, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/8" },
+            { series: "Naruto", season: 2, episode: 4, image: "https://i.ibb.co/SDdgMXKN/303476-blondes-naruto-shippuden-anime-anime-boys-sage-mode-uzumaki-naruto-scaled.jpg", link: "https://t.me/Honesthimesh/9" }
         ];
 
         function displayAnimeList() {
             const container = document.getElementById('animeContainer');
             container.innerHTML = '';
 
-            animeDatabase.forEach(anime => {
-                let animeCard = document.createElement('div');
-                animeCard.classList.add('anime-card');
+            let animeGroups = {};
 
-                animeCard.innerHTML = `
-                    <img src="${anime.image}" alt="${anime.title}">
-                    <p class="anime-title">${anime.title}</p>
-                    <a href="${anime.link}" target="_blank">Watch Now</a>
+            animeDatabase.forEach(anime => {
+                let key = `${anime.series} (Season ${anime.season})`;
+                if (!animeGroups[key]) {
+                    animeGroups[key] = [];
+                }
+                animeGroups[key].push(anime);
+            });
+
+            Object.keys(animeGroups).forEach(series => {
+                let section = document.createElement('div');
+                section.classList.add('anime-section');
+
+                section.innerHTML = `
+                    <div class="anime-header" onclick="toggleDrawer(this)">
+                        ${series}
+                    </div>
+                    <div class="anime-content">
+                        ${animeGroups[series].map(anime => `
+                            <div class="anime-card">
+                                <img src="${anime.image}" alt="${anime.series}">
+                                <a href="${anime.link}" target="_blank">${anime.episode ? "Episode " + anime.episode : "Watch Now"}</a>
+                            </div>
+                        `).join('')}
+                    </div>
                 `;
 
-                container.appendChild(animeCard);
+                container.appendChild(section);
             });
         }
 
-        function searchAnime() {
-            let input = document.getElementById("searchBar").value.toLowerCase();
-            let found = false;
-
-            document.querySelectorAll('.anime-card').forEach(card => {
-                let title = card.querySelector('.anime-title').innerText.toLowerCase();
-                if (title.includes(input)) {
-                    card.style.display = "block";
-                    found = true;
-                } else {
-                    card.style.display = "none";
-                }
-            });
-
-            document.getElementById("notFoundMessage").style.display = found ? "none" : "block";
+        function toggleDrawer(header) {
+            let content = header.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
         }
 
         displayAnimeList();
     </script>
 
 </body>
-</html>
+</html> 
